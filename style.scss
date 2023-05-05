@@ -1,0 +1,103 @@
+.food-page {
+  .header {
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-between;
+    height: 80px;
+    .nav-items {
+      margin-right: 50px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    img {
+      height: 80px;
+      width: 100px;
+    }
+    ul {
+      display: flex;
+      list-style: none;
+      li {
+        padding: 10px;
+        padding-left: 20px;
+      }
+    }
+  }
+  .card-container {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    h2,
+    h3 {
+      padding-left: 25px;
+    }
+    h3 {
+      color: #686b78;
+      font-size: 15px;
+    }
+    .rating {
+      background: #6bd86b;
+      height: 20px;
+      width: 58px;
+    }
+    width: 300px;
+    img {
+      height: 200px;
+      width: 300px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+  .restaurant-body {
+    .body-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 125px 20px 125px;
+      .filter-button {
+        cursor: pointer;
+        height: 40px;
+        width: auto;
+        background: #96d696;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .search-button {
+        display: flex;
+        height: 20px;
+        width: 150px;
+        justify-content: space-between;
+        height: 30px;
+        width: 200px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        button {
+          border: 1px solid black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .restaurant-container {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    .card-container {
+      margin: 10px 10px 10px 10px;
+    }
+    .card-container :hover {
+      cursor: pointer;
+    }
+  }
+  .card-details {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
