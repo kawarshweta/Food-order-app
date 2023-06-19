@@ -101,15 +101,24 @@
     justify-content: space-evenly;
   }
 }
-.shimmer-card{
-  background-color: rgb(194, 194, 194);
-  width: 300px;
-  height: 400px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
- margin: auto;
- margin-top: 50px;
- display: flex;
- flex: wrap;
+.restaurant-body-shimmer{
+  flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+  .shimmer-card{
+    background-color: rgb(194, 194, 194);
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   margin: auto;
+   margin-top: 50px;
+   display: flex;
+   flex: wrap;
+   animation: shimmer 2s infinite linear;
+  }
 }
+
