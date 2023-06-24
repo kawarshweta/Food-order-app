@@ -3,10 +3,7 @@ import { CDN_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const userLoggedIn = () => {
-    return false;
-  };
-
+  
   const [isLogedIn, setIslogedIn] = useState(false);
   return (
     <div className="header">

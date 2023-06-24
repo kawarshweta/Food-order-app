@@ -1,8 +1,9 @@
 import Cards from "./Cards";
-import resObj from "../utils/mockdata";
 import { useState, useEffect } from "react";
 import resObj from "../utils/mockdata";
-import Shimmer from "./Shimmer"
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -18,17 +19,25 @@ const Body = () => {
     fetchData();
   }
 
-  const fetchData = async () =>{
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1160966&lng=72.9977486&page_type=DESKTOP_WEB_LISTING");
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1160966&lng=72.9977486&page_type=DESKTOP_WEB_LISTING"
+    );
 
     const json = await data.json();
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-  }
+  };
+
+  const OnlineStatus = useOnlineStatus();
+
+  if (OnlineStatus === false) return(<h1>Looks like you are offline, please check your internet connection!!!</h1>)
 
   function filterData(searchText, listOfRestaurants) {
     const filterData = listOfRestaurants.filter((listOfRestaurants) =>
-      listOfRestaurants?.data?.name?.toLowerCase()?.includes(searchText?.toLowerCase())
+      listOfRestaurants?.data?.name
+        ?.toLowerCase()
+        ?.includes(searchText?.toLowerCase())
     );
     return filterData;
   }
@@ -54,6 +63,7 @@ const Body = () => {
             />
             <button
               onClick={() => {
+                //filter the restaurant cards and update the ui
                 const data = filterData(searchText, allRestaurants);
                 setFilteredRestaurants(data);
               }}
@@ -65,7 +75,7 @@ const Body = () => {
           <button
             className="filter-button"
             onClick={() => {
-              const filterdList = filteredRestaurants.filter( 
+              const filterdList = filteredRestaurants.filter(
                 (res) => res.data.avgRating > 4
               );
               setFilteredRestaurants(filterdList);
@@ -76,12 +86,18 @@ const Body = () => {
           </button>
         </div>
         <div className="restaurant-container">
-          {(filteredRestaurants.length == 0)? (<h1>No restaurant matches your search</h1>):
+          {filteredRestaurants.length == 0 ? (
+            <h1>No restaurant matches your search</h1>
+          ) : (
             filteredRestaurants.map((restaurant) => (
-              <Cards key={restaurant.data.id} resData={restaurant} />
+              <Link
+                to={"/restaurant/" + restaurant.data.id}
+                key={restaurant.data.id}
+              >
+                <Cards resData={restaurant} />
+              </Link>
             ))
-          }
-        
+          )}
         </div>
       </div>
     </>
