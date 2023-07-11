@@ -49,12 +49,13 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
+     {/* <Shimmer /> */}
       <div className="restaurant-body">
-        <div className="body-header">
-          <div className="search-button">
+        <div className="flex justify-between m-4 ml-60">
+          <div className="">
             <input
               type="text"
-              className="search-input"
+              className="border-solid border-2 border-black-500 w-60 rounded-md pl-2"
               placeholder="search"
               value={searchText}
               onChange={(e) => {
@@ -62,6 +63,7 @@ const Body = () => {
               }}
             />
             <button
+              className="border-solid border-2 rounded-md bg-green-600"
               onClick={() => {
                 //filter the restaurant cards and update the ui
                 const data = filterData(searchText, allRestaurants);
@@ -73,7 +75,7 @@ const Body = () => {
           </div>
 
           <button
-            className="filter-button"
+            className="bg-green-600 p-2 rounded-md mr-60 mb-5"
             onClick={() => {
               const filterdList = filteredRestaurants.filter(
                 (res) => res.data.avgRating > 4
@@ -85,7 +87,7 @@ const Body = () => {
             Filter top rated reastaurants
           </button>
         </div>
-        <div className="restaurant-container">
+        <div className="flex mx-10 flex-wrap m-auto justify-center">
           {filteredRestaurants.length == 0 ? (
             <h1>No restaurant matches your search</h1>
           ) : (

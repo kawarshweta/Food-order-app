@@ -1,7 +1,5 @@
-const Footer = () =>{
-    return (
-        <h1>This is footer</h1>
-    );
-}
+const Footer = () => {
+  return <div className="bg-gray-300 h-32">This is Footer</div>;
+};
 
 export default Footer;
